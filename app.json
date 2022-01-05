@@ -1,91 +1,83 @@
 {
-  "name": "Telegram Radio Player V3",
-  "description": "An Telegram Bot By Safone to Play Nonstop Radio/Music/YouTube Live in Telegram Voice Chats",
-  "repository": "https://github.com/3dly159/repoi55t",
-  "logo": "https://telegra.ph/file/a3755d9cb09f1361e3ac7.jpg",
+  "name": "VCPlayBot",
+  "logo": "https://telegra.ph/file/7ffa8d18b9b7f1b51a81e.jpg",
+  "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
+  "keywords": ["music", "voicechat", "telegram"],
+  "repository": "https://github.com/QueenArzoo/VCPlayBot",
   "stack": "container",
-  "keywords": [
-    "telegram",
-    "bot",
-    "voicechat",
-    "radio",
-    "music",
-    "python",
-    "pyrogram",
-    "pytgcalls",
-    "vcradio",
-    "radioplayer"
-  ],
+  "buildpacks": [
+   {
+     "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+   }   
+  ],        
   "env": {
-    "API_ID": {
-      "description": "User Accounts Telegram API_ID get it from https://my.telegram.org/apps",
-      "required": true
-    },
-    "API_HASH": {
-      "description": "User Accounts Telegram API_HASH get it from https://my.telegram.org/apps",
+    "SESSION_NAME": {
+      "description": "Pyrogram session string",
       "required": true
     },
     "BOT_TOKEN": {
-      "description": "Your Telegram Bot Token, get it from https://t.me/botfather",
+      "description": "A bot token from @BotFather",
       "required": true
     },
-    "SESSION_STRING": {
-      "description": "User Accounts Session String, get it from https://replit.com/@AsmSafone/genStr",
+    "BOT_USERNAME": {
+      "description": "Your bot's username without @",
       "required": true
     },
-    "CHAT_ID": {
-      "description": "ID of your Channel or Group where the bot plays Radio/Music/YouTube Lives",
+    "BOT_NAME": {
+      "description": "Your MusicPlayer Bot Name.",
+      "required": false,
+      "value": ""
+    },
+    "SUPPORT_GROUP": {
+      "description": "Your MusicPlayer support group without @ [Leave this if you don't have one]",
+      "required": false,
+      "value": "AwesomeSupport"
+    },
+    "PROJECT_NAME": {
+      "description": "Your MusicPlayer project Name.",
+      "required": false,
+      "value": "VCPlayBot2.0"
+    },
+    "ASSISTANT_NAME": {
+      "description": "Your MusicPlayer's assistant Username without @.",
       "required": true
     },
-    "LOG_GROUP": {
-      "description": "ID of the group to send playlist if CHAT_ID is a Group, if channel then leave blank",
-      "required": false
-    },
-    "AUTH_USERS": {
-      "description": "ID of Auth Users who can use Admin commands (for multiple users seperated by space)",
+    "ARQ_API_KEY": {
+      "description": "Get from @ARQRobot.",
+      "required": false,
+      "value": "VKSSQH-SRNJYZ-MSOJAI-QALESR-ARQ"
+    },    
+    "BG_IMAGE": {
+      "description": "BG image of bot (Use transparent one) [IGNORE].",
+      "required": false,
+      "value": "https://telegra.ph/file/9b13ea3ce046a1a5c8098.png"
+    },     
+    "UPDATES_CHANNEL": {
+      "description": "Updates Channel without @ [Leave this if you don't have one].",
+      "required": false,
+      "value": "LaylaList"
+    },    
+    "API_ID": {
+      "description": "App ID from my.telegram.org/apps",
       "required": true
     },
-    "ADMIN_ONLY": {
-      "description": "Change it to 'True' If you want to make /play commands only for admins of CHAT_ID. By default /play is available for all.",
-      "value": "False",
-      "required": false
-    },
-    "MAXIMUM_DURATION": {
-      "description": "Maximum Duration of a song to be played by using /play command",
-      "value": "15",
-      "required": false
-    },
-    "STREAM_URL": {
-      "description": "URL of Radio Station or Youtube Live video url to stream with /radio command",
-      "value": "https://youtu.be/5qap5aO4i9A",
-      "required": false
-    },
-    "REPLY_MESSAGE": {
-      "description": "A reply message to those who message the USER account in PM. Make it blank if you do not need this feature.",
-      "value": "Hello Sir, I'm a bot to play radio/music/youtube live on telegram voice chat, not having time to chat with you 😂!",
-      "required": false
-    },
-    "HEROKU_API_KEY": {
-      "description": "Your Heroku api token. Get it from https://dashboard.heroku.com/account",
+    "PMPERMIT": {
+      "description": "Change to turn off",
+      "required": false,
+      "value": "ENABLE"
+    },    
+    "API_HASH": {
+      "description": "App hash from my.telegram.org/apps",
       "required": true
     },
-    "HEROKU_APP_NAME": {
-      "description": "Name of your Heroku app, given in the first blank on this page if deploying to heroku.",
+    "SUDO_USERS": {
+      "description": "List of user IDs counted as admin everywhere (separated by space).",
       "required": true
+    },
+    "DURATION_LIMIT": {
+      "description": "Max audio duration limit for downloads (minutes).",
+      "required": true,
+      "value": "15"
     }
-  },
-  "formation": {
-    "worker": {
-      "quantity": 1,
-      "size": "free"
-    }
-  },
-  "buildpacks": [
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
-      "url": "heroku/python"
-    }
-  ]
+  }
 }
